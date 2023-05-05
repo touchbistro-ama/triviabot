@@ -1,25 +1,24 @@
 import { Configuration, OpenAIApi } from "openai";
+import "dotenv/config";
 
 const main = async () => {
-  const apiKey = "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";
+  const apiKey = process.env.OPENAPI_APIKEY;
   const configuration = new Configuration({
     apiKey,
   });
 
-  const prompt = `Happy Friday TouchBistro!
+  const prompt = `Happy Friday TouchBistro!! To mark the coronation of King Charles, today's trivia will test your knowledge of the Royal Family!
 
-  In today's trivia, we are testing your knowledge of the solar system! The first person to answer all the questions below correctly, will win a gift card.
-  
-  1. What three planets are closest to the Sun?
-  2. Which planet has the most moons?
-  3. What's the brightest planet in Earth's night sky?
-  4. Which planet is furthest from the sun?
-  5. Which planet in our solar system has the most oxygen?
-  6. How many planets in our solar system have moons?
-  7. What is the hottest planet in our solar system?
-  8. In our solar system, which planet has the shortest day?
-  9. What is the smallest planet in the solar system?
-  10. What is the only planet known to have active volcanoes besides Earth?
+  1. What are the names of King Charles's five grandchildren?
+  2. What were Queen Elizabeth's two middle names?
+  3. Who designed Princess Diana's wedding dress?
+  4. Which British Princess has a child named Sienna Elizabeth?
+  5. How old was Queen Elizabeth II when she became monarch?
+  6. Where do the Royal Family traditionally spend Christmas?
+  7. What football team do Prince William and Prince George support?
+  8. Who lived in Hampton Court Palace?
+  9. What language other than English did Queen Elizabeth II speak fluently?
+  10. Where will King Charles' Coronation be held?
   
   Good luck!`;
 
@@ -28,7 +27,7 @@ const main = async () => {
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
   });
-
+  console.log(response);
   console.log(response.data.choices);
 };
 
